@@ -1,9 +1,9 @@
 from q2_types.feature_data import FeatureData
+from qiime2.plugin import SemanticType
 
 from q2_nasp2_types.formats import BWAIndexDirFmt, SAMFileDirFmt, BAMFileDirFmt, VCFFileDirFmt, NASP2MatrixFileDirFmt, \
     YAMLFileDirFmt, XMLFileDirFmt
 from q2_nasp2_types.plugin_setup import plugin
-from qiime2.plugin import SemanticType
 
 # Semantic Types
 BWAIndex = SemanticType('BWAIndex')
