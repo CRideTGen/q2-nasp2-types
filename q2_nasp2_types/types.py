@@ -1,4 +1,4 @@
-from q2_types.feature_data import FeatureData, AlignedSequence
+from q2_types.feature_data import FeatureData
 
 from q2_nasp2_types.formats import BWAIndexDirFmt, SAMFileDirFmt, BAMFileDirFmt, VCFFileDirFmt, NASP2MatrixFileDirFmt, \
     YAMLFileDirFmt, XMLFileDirFmt
@@ -7,6 +7,8 @@ from qiime2.plugin import SemanticType
 
 # Semantic Types
 BWAIndex = SemanticType('BWAIndex')
+
+AlignedReads = SemanticType('AlignedReads', variant_of=[FeatureData.field['type']])
 
 SNPFile = SemanticType('SNPFile', field_names='type')
 VCFFile = SemanticType('VCFFile', variant_of=[SNPFile.field['type']])
@@ -18,11 +20,11 @@ YAMLFile = SemanticType('YAMLFile', variant_of=[Config.field['type']])
 XMLFile = SemanticType('XMLFile', variant_of=[Config.field['type']])
 
 # Registering Types
-plugin.register_semantic_types(BWAIndex)
+plugin.register_semantic_types(BWAIndex, AlignedReads)
 plugin.register_formats(SAMFileDirFmt, BAMFileDirFmt, BWAIndexDirFmt)
 plugin.register_semantic_type_to_format(BWAIndex, artifact_format=BWAIndexDirFmt)
-plugin.register_semantic_type_to_format(FeatureData[AlignedSequence], artifact_format=SAMFileDirFmt)
-plugin.register_semantic_type_to_format(FeatureData[AlignedSequence], artifact_format=BAMFileDirFmt)
+plugin.register_semantic_type_to_format(FeatureData[AlignedReads], artifact_format=SAMFileDirFmt)
+plugin.register_semantic_type_to_format(FeatureData[AlignedReads], artifact_format=BAMFileDirFmt)
 
 plugin.register_semantic_types(SNPFile, NASP2MatrixFile, VCFFile)
 plugin.register_formats(NASP2MatrixFileDirFmt, VCFFileDirFmt)
