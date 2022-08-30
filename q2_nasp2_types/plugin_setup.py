@@ -13,8 +13,9 @@
 #   limitations under the License.
 
 from qiime2.plugin import Plugin
+import q2_nasp2_types
 
 plugin = Plugin(name='nasp2_types',
-                version='0.0.1',
+                version=q2_nasp2_types.__version__,
                 package='q2_nasp2_types',
                 website='https://github.com/CRideTGen/q2-readmappers')
