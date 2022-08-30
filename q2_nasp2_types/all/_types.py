@@ -1,7 +1,7 @@
 from q2_types.feature_data import FeatureData
 from qiime2.plugin import SemanticType
 
-from q2_nasp2_types.formats import BWAIndexDirFmt, SAMFileDirFmt, BAMFileDirFmt, VCFFileDirFmt, NASP2MatrixFileDirFmt, \
+from q2_nasp2_types import BWAIndexDirFmt, SAMFileDirFmt, BAMFileDirFmt, VCFFileDirFmt, NASP2MatrixFileDirFmt, \
     YAMLFileDirFmt, XMLFileDirFmt
 from q2_nasp2_types.plugin_setup import plugin
 
@@ -21,12 +21,12 @@ XMLFile = SemanticType('XMLFile', variant_of=[Config.field['type']])
 
 # Registering Types
 
-plugin.register_semantic_types(AlignedReads, BWAIndex)
+plugin.register_semantic_types(AlignedReads, BWAIndex,SNPFile, NASP2MatrixFile, VCFFile)
 plugin.register_semantic_type_to_format(BWAIndex, artifact_format=BWAIndexDirFmt)
 plugin.register_semantic_type_to_format(FeatureData[AlignedReads], artifact_format=SAMFileDirFmt)
 plugin.register_semantic_type_to_format(FeatureData[AlignedReads], artifact_format=BAMFileDirFmt)
 
-plugin.register_semantic_types(SNPFile, NASP2MatrixFile, VCFFile)
+plugin.register_semantic_types()
 plugin.register_semantic_type_to_format(SNPFile[NASP2MatrixFile], artifact_format=NASP2MatrixFileDirFmt)
 plugin.register_semantic_type_to_format(SNPFile[VCFFile], artifact_format=VCFFileDirFmt)
 
