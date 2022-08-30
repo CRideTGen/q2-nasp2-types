@@ -4,7 +4,7 @@ import versioneer
 setup(
     name='q2-nasp2-types',
     version=versioneer.get_version(),
-    cmdclass=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     packages=find_packages(),
     url='github.com/CRideTGen/q2-nasp2-types',
     license='Apache-2.0',

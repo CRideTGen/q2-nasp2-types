@@ -44,7 +44,7 @@ def get_config():
     cfg.VCS = "git"
     cfg.style = "pep440"
     cfg.tag_prefix = ""
-    cfg.parentdir_prefix = "q2-nasp2-types"
+    cfg.parentdir_prefix = "q2-nasp2-"
     cfg.versionfile_source = "q2_nasp2_types/_version.py"
     cfg.verbose = False
     return cfg
