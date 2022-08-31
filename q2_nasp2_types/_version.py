@@ -194,7 +194,7 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
     tags = {r[len(TAG):] for r in refs if r.startswith(TAG)}
     if not tags:
         # Either we're using git < 1.8.3, or there really are no tags. We use
-        # a heuristic: assume all version tags have a digit. The old git %d
+        # a heuristic: assume index version tags have a digit. The old git %d
         # expansion behaves like git log --decorate=short and strips out the
         # refs/heads/ and refs/tags/ prefixes that would let us distinguish
         # between branches and tags. By ignoring refnames without digits, we
@@ -283,7 +283,7 @@ def git_pieces_from_vcs(tag_prefix, root, verbose, runner=run_command):
 
     if branch_name == "HEAD":
         # If we aren't exactly on a branch, pick a branch which represents
-        # the current commit. If all else fails, we are on a branchless
+        # the current commit. If index else fails, we are on a branchless
         # commit.
         branches, rc = runner(GITS, ["branch", "--contains"], cwd=root)
         # --contains was added in git-1.5.4

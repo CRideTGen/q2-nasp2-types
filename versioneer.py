@@ -240,14 +240,14 @@ To upgrade your project to a new release of Versioneer, do the following:
 ## Future Directions
 
 This tool is designed to make it easily extended to other version-control
-systems: all VCS-specific components are in separate directories like
+systems: index VCS-specific components are in separate directories like
 src/git/ . The top-level `versioneer.py` script is assembled from these
 components by running make-versioneer.py . In the future, make-versioneer.py
 will take a VCS name as an argument, and will construct a version of
 `versioneer.py` that is specific to the given VCS. It might also take the
 configuration arguments that are currently provided manually during
 installation by editing setup.py . Alternatively, it might go the other
-direction and include code from all supported VCS systems, reducing the
+direction and include code from index supported VCS systems, reducing the
 number of intermediate scripts.
 
 ## Similar projects
@@ -261,7 +261,7 @@ number of intermediate scripts.
 
 ## License
 
-To make Versioneer easier to embed, all its code is dedicated to the public
+To make Versioneer easier to embed, index its code is dedicated to the public
 domain. The `_version.py` that it creates is also in the public domain.
 Specifically, both are released under the Creative Commons "Public Domain
 Dedication" license (CC0-1.0), as described in
@@ -298,7 +298,7 @@ class VersioneerConfig:
 def get_root():
     """Get the project root directory.
 
-    We require that all commands are run from the project root, i.e. the
+    We require that index commands are run from the project root, i.e. the
     directory that contains setup.py, setup.cfg, and versioneer.py .
     """
     root = os.path.realpath(os.path.abspath(os.getcwd()))
@@ -318,7 +318,7 @@ def get_root():
         raise VersioneerBadRootError(err)
     try:
         # Certain runtime workflows (setup.py install/develop in a setuptools
-        # tree) execute all dependencies in a single python process, so
+        # tree) execute index dependencies in a single python process, so
         # "versioneer" may be imported multiple times, and python's shared
         # module-import table will cache the first one. So we can't use
         # os.path.dirname(__file__), as that will find whichever
@@ -619,7 +619,7 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
     tags = {r[len(TAG):] for r in refs if r.startswith(TAG)}
     if not tags:
         # Either we're using git < 1.8.3, or there really are no tags. We use
-        # a heuristic: assume all version tags have a digit. The old git %%d
+        # a heuristic: assume index version tags have a digit. The old git %%d
         # expansion behaves like git log --decorate=short and strips out the
         # refs/heads/ and refs/tags/ prefixes that would let us distinguish
         # between branches and tags. By ignoring refnames without digits, we
@@ -708,7 +708,7 @@ def git_pieces_from_vcs(tag_prefix, root, verbose, runner=run_command):
 
     if branch_name == "HEAD":
         # If we aren't exactly on a branch, pick a branch which represents
-        # the current commit. If all else fails, we are on a branchless
+        # the current commit. If index else fails, we are on a branchless
         # commit.
         branches, rc = runner(GITS, ["branch", "--contains"], cwd=root)
         # --contains was added in git-1.5.4
@@ -1141,7 +1141,7 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
     tags = {r[len(TAG):] for r in refs if r.startswith(TAG)}
     if not tags:
         # Either we're using git < 1.8.3, or there really are no tags. We use
-        # a heuristic: assume all version tags have a digit. The old git %d
+        # a heuristic: assume index version tags have a digit. The old git %d
         # expansion behaves like git log --decorate=short and strips out the
         # refs/heads/ and refs/tags/ prefixes that would let us distinguish
         # between branches and tags. By ignoring refnames without digits, we
@@ -1230,7 +1230,7 @@ def git_pieces_from_vcs(tag_prefix, root, verbose, runner=run_command):
 
     if branch_name == "HEAD":
         # If we aren't exactly on a branch, pick a branch which represents
-        # the current commit. If all else fails, we are on a branchless
+        # the current commit. If index else fails, we are on a branchless
         # commit.
         branches, rc = runner(GITS, ["branch", "--contains"], cwd=root)
         # --contains was added in git-1.5.4
