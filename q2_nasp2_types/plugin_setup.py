@@ -11,11 +11,17 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
+import importlib
 
 from qiime2.plugin import Plugin
+
 from q2_nasp2_types import __version__
 
 plugin = Plugin(name='nasp2_types',
                 version=__version__,
                 package='q2_nasp2_types',
                 website='https://github.com/CRideTGen/q2-readmappers')
+
+
+
+importlib.import_module("q2_nasp2_types.alignment._transformers")

@@ -1,6 +1,3 @@
-import pathlib
-from typing import NamedTuple, List
-
 from q2_types.feature_data import FeatureData
 from qiime2.plugin import SemanticType
 

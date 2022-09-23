@@ -14,8 +14,8 @@ class SAMFileDirFmt(model.DirectoryFormat):
         format=SAMFileFormat)
 
     @sam_files.set_path_maker
-    def sequences_path_maker(self, sample_id, ):
-        return '%s.sam' % (sample_id)
+    def sequences_path_maker(self, sample_id ):
+        return f'{sample_id}.sam'
 
 
 class BAMFileFormat(model.TextFileFormat):
@@ -24,10 +24,13 @@ class BAMFileFormat(model.TextFileFormat):
 
 
 class BAMFileDirFmt(model.DirectoryFormat):
-    sam_files = model.FileCollection(r'*.sam', format=BAMFileFormat)
+    bam_files = model.FileCollection(r'.*\.bam', format=BAMFileFormat)
 
     def _validate_(self, level):
         pass
 
+    @bam_files.set_path_maker
+    def sequences_path_maker(self, sample_id ):
+        return f'{sample_id}.bam'
 
 plugin.register_formats(SAMFileFormat, SAMFileDirFmt, BAMFileFormat, BAMFileDirFmt)
